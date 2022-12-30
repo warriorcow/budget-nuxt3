@@ -1,0 +1,66 @@
+@import "./_fonts.scss";
+@import "./transition.scss";
+@import "./layout-default.scss";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+a {
+  text-decoration: none;
+
+  &:visited {
+    color: inherit;
+  }
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+button {
+  border: none;
+  font-family: inherit;
+}
+
+$max: 50;
+$offset: 5;
+$unit: 'px'; // Feel free to change the unit.
+@mixin list-loop($className, $styleName) {
+  $i: 0;
+  @while $i <= $max {
+    #{$className + $i} {
+      #{$styleName}: #{$i + $unit};
+    }
+    $i: $i + $offset;
+  }
+}
+
+.ml-auto {
+  margin-left: auto;
+}
+
+.mr-auto {
+  margin-right: auto;
+}
+
+// Margins
+@include list-loop('.mt-', 'margin-top');
+@include list-loop('.mr-', 'margin-right');
+@include list-loop('.mb-', 'margin-bottom');
+@include list-loop('.ml-', 'margin-left');
+@include list-loop('.mx-', 'margin');
+// Paddings
+@include list-loop('.pt-', 'padding-top');
+@include list-loop('.pr-', 'padding-right');
+@include list-loop('.pb-', 'padding-bottom');
+@include list-loop('.pl-', 'padding-left');
+@include list-loop('.px-', 'padding');

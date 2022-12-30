@@ -1,0 +1,26 @@
+@font-face {
+    font-family: 'Chalkboard';
+    src: url('Chalkboard.eot');
+    src: local('Chalkboard'),
+        url('Chalkboard.eot?#iefix') format('embedded-opentype'),
+        url('Chalkboard.woff2') format('woff2'),
+        url('Chalkboard.woff') format('woff'),
+        url('Chalkboard.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Chalkboard';
+    src: url('Chalkboard-Bold.eot');
+    src: local('Chalkboard Bold'), local('Chalkboard-Bold'),
+        url('Chalkboard-Bold.eot?#iefix') format('embedded-opentype'),
+        url('Chalkboard-Bold.woff2') format('woff2'),
+        url('Chalkboard-Bold.woff') format('woff'),
+        url('Chalkboard-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
