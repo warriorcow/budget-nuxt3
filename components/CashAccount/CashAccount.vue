@@ -19,9 +19,9 @@
           ID: {{ id }}
         </div>
       </div>
-      <div class="cash-account__logo">
+      <NuxtLink :to="`account/${id}`" class="cash-account__logo">
         <img src="~/assets/img/visa.png" alt="logo-card">
-      </div>
+      </NuxtLink>
     </div>
   </div>
 
