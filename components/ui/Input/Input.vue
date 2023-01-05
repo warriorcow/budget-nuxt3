@@ -2,7 +2,7 @@
   <div class="input">
     <div class="input__label">{{ label }}</div>
     <input class="input__input"
-           type="text"
+           :type="type"
            :value="modelValue"
            @input="$emit('update:modelValue', $event.target.value)" />
   </div>
@@ -16,10 +16,17 @@ export default {
 
 <script setup>
 defineProps({
+  value: {
+    type: String | Number
+  },
   label: {
     type: String
   },
-  modelValue: String
+  type: {
+    type: String,
+    default: 'text'
+  },
+  modelValue: String | Number
 })
 
 defineEmits(['update:modelValue'])

@@ -5,7 +5,7 @@ const schema: Schema = new Schema({
     type: String
   },
   cash: {
-    type: String
+    type: Number
   },
   type: {
     type: String
