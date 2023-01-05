@@ -1,6 +1,14 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  vite: {},
+  vite: {
+    css: {
+      preprocessorOptions: {
+        scss: {
+          additionalData: '@import "assets/_variables.scss";',
+        },
+      },
+    },
+  },
   nitro: {
     plugins: ['~/server/index.ts']
   },

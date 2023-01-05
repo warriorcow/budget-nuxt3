@@ -2,17 +2,20 @@ import { Schema, model } from "mongoose"
 
 const schema: Schema = new Schema({
   id_account: {
-    type: String
+    type: String,
+    required: true
   },
   cash: {
-    type: Number
+    type: Number,
+    required: true
   },
   type: {
-    type: String
+    type: String,
+    required: true
   },
   name: {
     type: String,
-    default: 'Empty'
+    required: true
   }
 })
 

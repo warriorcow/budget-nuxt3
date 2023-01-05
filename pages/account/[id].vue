@@ -10,6 +10,13 @@
     <hr />
     <UiButton class="mt-10" text="Добавить расход / доход" @click="isOpenAddActions = !isOpenAddActions" />
 
+    <AccountAction
+      v-for="action in accountActions"
+      :title="action.name"
+      :value="actionValue(action)"
+      @remove="deleteAction(action._id)"
+    />
+
     <UiDialog :is-show="isOpenAddActions" @close="isOpenAddActions = false">
       <h1 class="mb-20">Добавление активности счета</h1>
       <UiInput v-model="newActions.name" label="Имя" />
@@ -20,17 +27,17 @@
       <UiButton class="ml-auto mt-30" text="Сохранить" @click="addAction" />
     </UiDialog>
 
-    <div
-      v-for="action in accountActions"
-      :key="action._id"
-      :class="`account__action account__${action.type}`"
-    >
-      <span>{{ actionValue(action) }}</span> <span>{{ action.name }}</span>
-      <UiButton text="Удалить" @click="deleteAction(action._id)" />
-      <UiInput type="number" v-model="action.cash" />
-      <UiButton text="Изменить" @click="changeAction(action)" />
+<!--    <div-->
+<!--      v-for="action in accountActions"-->
+<!--      :key="action._id"-->
+<!--      :class="`account__action account__${action.type}`"-->
+<!--    >-->
+<!--      <span>{{ actionValue(action) }}</span> <span>{{ action.name }}</span>-->
+<!--      <UiButton text="Удалить" @click="deleteAction(action._id)" />-->
+<!--      <UiInput type="number" v-model="action.cash" />-->
+<!--      <UiButton text="Изменить" @click="changeAction(action)" />-->
 
-    </div>
+<!--    </div>-->
   </div>
 </template>
 
