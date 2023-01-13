@@ -13,10 +13,11 @@ export default {}
   width: 100%;
   padding: 10px 15px;
   cursor: pointer;
+  color: $color-light;
 
   &:hover {
-    background-color: $color-default;
-    color: $color-white;
+    background-color: $color-secondary;
+    color: $color-default;
   }
 }
 </style>

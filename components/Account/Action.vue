@@ -5,7 +5,7 @@
     <div class="account-action__more">
       <UiDropdown>
         <template #button-content>
-          <UiIconMore fill="#000" width="20px" height="20px" />
+          <UiIconMore fill="#fff" width="20px" height="20px" />
         </template>
         <UiDropdownItem>Редактировать</UiDropdownItem>
         <UiDropdownItem @click="$emit('remove')">Удалить</UiDropdownItem>
@@ -32,7 +32,9 @@ const props = defineProps({
   display: flex;
   align-items: center;
   border-radius: 5px;
-  background: #e3e3e3;
+  border: 1px solid $color-secondary;
+  background: $color-default;
+  color: $color-secondary;
   padding: 15px 10px;
 
   &__more {

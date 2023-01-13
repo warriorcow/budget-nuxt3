@@ -2,7 +2,7 @@ import { Schema, model } from "mongoose"
 
 const schema: Schema = new Schema({
   cash: {
-    type: Number
+    type: String
   },
   name: {
     type: String

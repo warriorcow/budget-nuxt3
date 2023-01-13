@@ -36,24 +36,24 @@ defineEmits(['update:modelValue'])
 .input {
   display: flex;
   flex-direction: column;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 
   &__label {
-    margin-bottom: 5px;
-    font-size: 16px;
+    margin-bottom: 8px;
+    font-size: 18px;
     font-weight: 700;
-    color: teal;
-    margin-left: 8px;
+    color: $color-light;
+    margin-left: 10px;
   }
 
   &__input {
-    background: #f0f0f0;
+    background: $color-secondary-dark;
     border: none;
-    border-bottom: 2px solid teal;
+    border-bottom: 2px solid $color-secondary;
     padding: 10px;
     outline: none;
-    font-size: 14px;
-    color: teal;
+    font-size: 16px;
+    color: $color-light;
   }
 }
 </style>

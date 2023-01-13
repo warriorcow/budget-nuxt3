@@ -1,28 +1,24 @@
 <template>
   <div class="cash-account">
-    <div class="cash-account__settings" @click="openSettings">
-      <img src="~/assets/img/more.svg" alt="logo-card">
-    </div>
-    <div class="cash-account__delete" @click="deleteCashAccount">
-      <img src="~/assets/img/trash.svg" alt="logo-card">
-    </div>
-    <div class="cash-account__balance">
-      {{ cash }} <span>{{ currency }}</span>
-    </div>
-
-    <div class="cash-account__footer">
-      <div>
-        <div class="cash-account__name">
-          {{ name }}
-        </div>
-        <div class="cash-account__id">
-          ID: {{ id }}
-        </div>
+    <div class="cash-account__header">
+      <div class="cash-account__settings" @click="openSettings">
+        <UiIconMore fill="#000" width="20px" height="20px"/>
       </div>
-      <NuxtLink :to="`account/${id}`" class="cash-account__logo">
-        <img src="~/assets/img/visa.png" alt="logo-card">
-      </NuxtLink>
+      <div class="cash-account__delete" @click="deleteCashAccount">
+        <UiIconTrash fill="#000" width="20px" height="20px"/>
+      </div>
     </div>
+    <NuxtLink class="cash-account__content" :to="`account/${id}`">
+      <div class="cash-account__balance">
+        {{ filterNumber }} <span>{{ currency }}</span>
+      </div>
+      <div class="cash-account__name">
+        {{ name }}
+      </div>
+      <div class="cash-account__id">
+        ID: {{ id }}
+      </div>
+    </NuxtLink>
   </div>
 
   <UiDialog :is-show="isOpenSettings" @close="closeSettings">
@@ -41,6 +37,8 @@ export default {
 </script>
 
 <script setup>
+import {computed} from "vue";
+
 const isOpenSettings = ref(false)
 
 const props = defineProps({
@@ -55,6 +53,10 @@ const editProps = ref({
   name: props.name,
   currency: props.currency,
   id: props.id
+})
+
+const filterNumber = computed(() => {
+  return props.cash.replace(/(\d)(?=(\d{3})+([^\d]|$))/g, '$1 ')
 })
 
 const emit = defineEmits(['change-cash-account', 'delete'])
@@ -87,9 +89,10 @@ const deleteCashAccount = () => {
   flex-direction: column;
   width: calc(50% - 7.5px);
   height: 200px;
-  background-color: teal;
+  background-color: $color-secondary;
   border-radius: 10px;
   padding: 30px 10px 10px;
+  color: $color-dark;
 
   &:hover {
     #{$self}__delete, #{$self}__settings {
@@ -97,22 +100,19 @@ const deleteCashAccount = () => {
     }
   }
 
-  &__footer {
-    margin-top: auto;
-    display: flex;
+  &__content {
+    height: 100%;
   }
 
   &__id {
     margin-top: 5px;
     font-size: 10px;
-    color: #fff;
   }
 
   &__name {
     font-size: 26px;
     margin-right: 10px;
     align-self: center;
-    color: #fff;
     font-weight: 500;
   }
 
@@ -125,13 +125,11 @@ const deleteCashAccount = () => {
   &__balance {
     font-size: 40px;
     font-weight: 700;
-    color: #fff;
   }
 
   &__settings {
     position: absolute;
     font-size: 20px;
-    color: #fff;
     left: 10px;
     top: 10px;
     cursor: pointer;
@@ -139,6 +137,7 @@ const deleteCashAccount = () => {
     width: 20px;
     opacity: 0;
     transition: 300ms;
+    z-index: 100;
   }
 
   &__delete {
@@ -149,6 +148,7 @@ const deleteCashAccount = () => {
     opacity: 0;
     transition: 300ms;
     cursor: pointer;
+    z-index: 1;
   }
 }
 </style>

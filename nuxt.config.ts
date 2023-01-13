@@ -13,7 +13,7 @@ export default defineNuxtConfig({
     plugins: ['~/server/index.ts']
   },
   runtimeConfig: {
-    mongodbUri: 'mongodb://localhost:27017/nitro'
+    mongodbUri: 'mongodb://127.0.0.1:27017/nitro'
   },
   css: [
     'assets/global.scss'

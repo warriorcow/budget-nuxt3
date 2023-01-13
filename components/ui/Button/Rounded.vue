@@ -15,11 +15,11 @@
   border-radius: 100%;
   padding: 12px;
   cursor: pointer;
-  background: teal;
+  background: $color-secondary;
   transition: 300ms;
 
   &:hover {
-    background-color: #008080d1;
+    background-color: $color-secondary-hover;
   }
 }
 </style>

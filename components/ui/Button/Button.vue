@@ -1,12 +1,25 @@
 <template>
-  <button class="button">
+  <button :style="cssStyle" class="button">
     {{ text }}
+    <slot />
   </button>
 </template>
 
 <script setup lang="ts">
-defineProps({
-  text: String
+import { computed } from "vue";
+
+const props = defineProps({
+  text: String,
+  width: {
+    type: String,
+    default: "100%"
+  }
+})
+
+const cssStyle = computed(() => {
+  return {
+    width: props.width
+  }
 })
 </script>
 
@@ -15,17 +28,16 @@ defineProps({
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 10px;
-  background-color: teal;
-  color: #fff;
+  padding: 5px;
+  background-color: $color-secondary;
   border-radius: 10px;
   font-weight: 500;
-  min-width: 100px;
   cursor: pointer;
   transition: 300ms;
+  color: $color-dark;
 
   &:hover {
-    background-color: #008080d1;
+    background-color: $color-secondary-hover;
   }
 }
 </style>

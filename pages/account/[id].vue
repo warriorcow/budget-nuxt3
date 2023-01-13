@@ -1,21 +1,27 @@
 <template>
   <div class="account">
-    <pre style="white-space: pre-wrap">{{ account }}</pre>
-    <h1>СЧЕТ: {{ accountData._id }}</h1>
-    <h2>ИМЯ: {{ accountData.name }}</h2>
-    <h2>БАЛАНС: {{ accountData.cash }} {{ accountData.currency }}</h2>
-    <h2>РАССЧИТАНЫЙ БАЛАНС: {{ account.currentBalance }} {{ accountData.currency }}</h2>
+    <div class="account__header">
+      <h2 class="account__name"> {{ accountData.name }}</h2>
+<!--      <h2>БАЛАНС: {{ accountData.cash }} {{ accountData.currency }}</h2>-->
+<!--      <h2>РАССЧИТАНЫЙ БАЛАНС: {{ account.currentBalance }} {{ accountData.currency }}</h2>-->
+    </div>
 
-    <h2 class="mt-30 mb-10">Расходы</h2>
-    <hr />
-    <UiButton class="mt-10" text="Добавить расход / доход" @click="isOpenAddActions = !isOpenAddActions" />
+    <div class="account__actions">
+      <div class="account__actions-header">
+        <h2>Действия</h2>
+        <UiButton width="30px" @click="isOpenAddActions = !isOpenAddActions">
+          <UiIconPlus fill="#000" />
+        </UiButton>
+      </div>
 
-    <AccountAction
-      v-for="action in accountActions"
-      :title="action.name"
-      :value="actionValue(action)"
-      @remove="deleteAction(action._id)"
-    />
+      <AccountAction
+        v-for="action in accountActions"
+        :title="action.name"
+        :value="actionValue(action)"
+        class="mt-20"
+        @remove="deleteAction(action._id)"
+      />
+    </div>
 
     <UiDialog :is-show="isOpenAddActions" @close="isOpenAddActions = false">
       <h1 class="mb-20">Добавление активности счета</h1>
@@ -23,21 +29,8 @@
       <UiInput v-model="newActions.cash" label="Сумма" />
       <label><input type="radio" v-model="newActions.type" name="typeAction" value="spend" /> Расход</label>
       <label><input type="radio" v-model="newActions.type" name="typeAction" value="income" /> Доход</label>
-      <pre style="white-space: pre-wrap">{{ newActions }}</pre>
       <UiButton class="ml-auto mt-30" text="Сохранить" @click="addAction" />
     </UiDialog>
-
-<!--    <div-->
-<!--      v-for="action in accountActions"-->
-<!--      :key="action._id"-->
-<!--      :class="`account__action account__${action.type}`"-->
-<!--    >-->
-<!--      <span>{{ actionValue(action) }}</span> <span>{{ action.name }}</span>-->
-<!--      <UiButton text="Удалить" @click="deleteAction(action._id)" />-->
-<!--      <UiInput type="number" v-model="action.cash" />-->
-<!--      <UiButton text="Изменить" @click="changeAction(action)" />-->
-
-<!--    </div>-->
   </div>
 </template>
 
@@ -111,18 +104,34 @@ const changeAction = (val) => {
 <style scoped lang="scss">
 .account {
   &__action {
-    border: 1px solid teal;
+    border: 1px solid $color-secondary;
     border-radius: 10px;
     padding: 10px;
     margin: 5px 0;
   }
 
-  &__income {
-    color: green;
+  &__header {
+    margin: -20px -20px 0;
+    padding: 20px;
+    background-color: $color-secondary;
+    color: $color-default;
   }
 
-  &__spend {
-    color: red;
+  &__name {
+    font-size: 2rem;
+  }
+
+  &__actions {
+    margin-top: 20px;
+
+    &-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid $color-secondary;
+      padding-bottom: 10px;
+    }
+
   }
 }
 </style>

@@ -45,14 +45,14 @@ const closeDialog = () => {
     position: absolute;
     width: 100%;
     height: 100%;
-    background: #000;
+    background: $color-dark;
     opacity: 0.5;
   }
 
   &__container {
     padding: 15px;
     min-width: 600px;
-    background-color: #fff;
+    background-color: $color-default;
     border-radius: 10px;
     z-index: 1;
   }

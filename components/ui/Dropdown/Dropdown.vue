@@ -52,12 +52,12 @@ const onToggleDropdown = () => {
     right: 0;
     top: 0;
     margin-top: 10px;
-    background-color: $color-white;
+    background-color: $color-default;
+    border: 1px solid $color-secondary;
     z-index: 10;
     min-width: 300px;
     overflow: hidden;
     padding: 5px 0;
-    border: 1px solid rgba(0,0,0,.15);
   }
 }
 </style>

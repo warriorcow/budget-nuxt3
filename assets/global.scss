@@ -10,9 +10,12 @@
 
 body {
   font-family: 'Roboto', sans-serif;
+  background-color: rgb(24, 26, 32);
+  color: $color-light;
 }
 
 a {
+  color: inherit;
   text-decoration: none;
 
   &:visited {
@@ -30,6 +33,11 @@ button {
   border: none;
   font-family: inherit;
   outline: none;
+}
+
+svg {
+  width: 100%;
+  height: 100%;
 }
 
 $max: 50;

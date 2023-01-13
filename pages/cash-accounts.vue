@@ -13,7 +13,7 @@
       />
     </template>
     <div class="cash-accounts__empty-message" v-else>
-      <img class="cash-accounts__empty-message-img" src="~/assets/img/sad.svg" alt="logo">
+      <UiIconSad class="cash-accounts__icon" />
       Нет созданных счетов
       <UiButton class="cash-accounts__empty-message-create" text="Создать" @click="openModal" />
     </div>
@@ -28,7 +28,7 @@
     <UiButton class="ml-auto mt-30" text="Добавить" @click="addCashAccount" />
   </UiDialog>
   <UiButtonRounded class="cash-accounts__add" @click="openModal">
-    <img src="~/assets/img/plus.svg" alt="logo">
+    <UiIconPlus fill="#000" />
   </UiButtonRounded>
 </template>
 
@@ -42,7 +42,6 @@ export default {
 
 <script setup>
 import { useFetch } from "nuxt/app";
-
 const isOpenModal = ref(false)
 const { data: cashAccounts, refresh } = await useFetch('/api/cash-accounts')
 const newCashAccount = {
@@ -104,10 +103,16 @@ const changeCashAccount = async (val) => {
     justify-content: center;
   }
 
+  &__icon {
+    width: 150px;
+    height: 150px;
+    fill: $color-secondary;
+  }
+
   &__empty-message {
     font-size: 40px;
     margin-bottom: 80px;
-    color: teal;
+    color: $color-secondary;
     display: flex;
     align-items: center;
     flex-direction: column;
